@@ -147,9 +147,9 @@ describe 'Error reporter', ->
           ].join '\n'
 
           contextualError = stub.firstCall.args[0]
-          expect(contextualError).to.equal contextualErrorFixture
-
           stub.restore()
+
+          expect(contextualError).to.equal contextualErrorFixture
 
       context 'that does not have the previous line', ->
         it 'should provide the current and next line as context', ->
@@ -172,9 +172,9 @@ describe 'Error reporter', ->
           ].join '\n'
 
           contextualError = stub.firstCall.args[0]
-          expect(contextualError).to.equal contextualErrorFixture
-
           stub.restore()
+
+          expect(contextualError).to.equal contextualErrorFixture
 
       context 'that does not have the next line', ->
         it 'should provide the previous and current line as context', ->
@@ -197,9 +197,9 @@ describe 'Error reporter', ->
           ].join '\n'
 
           contextualError = stub.firstCall.args[0]
-          expect(contextualError).to.equal contextualErrorFixture
-
           stub.restore()
+
+          expect(contextualError).to.equal contextualErrorFixture
 
       context 'that has the previous and next line', ->
         it 'should provide the previous, current, and next line as context', ->
@@ -223,9 +223,9 @@ describe 'Error reporter', ->
           ].join '\n'
 
           contextualError = stub.firstCall.args[0]
-          expect(contextualError).to.equal contextualErrorFixture
-
           stub.restore()
+
+          expect(contextualError).to.equal contextualErrorFixture
 
 
     describe 'when formatting', ->
@@ -252,6 +252,6 @@ describe 'Error reporter', ->
           ].join '\n'
 
           contextualError = stub.firstCall.args[0]
-          expect(contextualError).to.equal contextualErrorFixture
-
           stub.restore()
+
+          expect(contextualError).to.equal contextualErrorFixture
