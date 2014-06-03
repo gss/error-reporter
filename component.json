@@ -7,9 +7,6 @@
   "json": [
     "component.json"
   ],
-  "remotes": [
-    "https://raw.githubusercontent.com"
-  ],
   "scripts": [
     "lib/error-reporter.js"
   ],
