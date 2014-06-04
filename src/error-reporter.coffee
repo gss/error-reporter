@@ -30,7 +30,7 @@ class ErrorReporter
     throw new Error 'Source code not provided' unless sourceCode?
 
     unless toString.call(sourceCode) is '[object String]'
-      throw new Error 'Source code must be a string'
+      throw new TypeError 'Source code must be a string'
 
     @_sourceCode = sourceCode
 
@@ -47,7 +47,7 @@ class ErrorReporter
     throw new Error 'Message not provided' unless message?
 
     unless toString.call(message) is '[object String]'
-      throw new Error 'Message must be a string'
+      throw new TypeError 'Message must be a string'
 
     throw new Error 'Message must not be empty' if message.length is 0
 
@@ -55,26 +55,26 @@ class ErrorReporter
     throw new Error 'Line number not provided' unless lineNumber?
 
     unless toString.call(lineNumber) is '[object Number]'
-      throw new Error 'Line number must be a number'
+      throw new TypeError 'Line number must be a number'
 
-    throw new Error 'Line number is invalid' if lineNumber <= 0
+    throw new RangeError 'Line number is invalid' if lineNumber <= 0
 
 
     throw new Error 'Column number not provided' unless columnNumber?
 
     unless toString.call(columnNumber) is '[object Number]'
-      throw new Error 'Column number must be a number'
+      throw new TypeError 'Column number must be a number'
 
-    throw new Error 'Column number is invalid' if columnNumber <= 0
+    throw new RangeError 'Column number is invalid' if columnNumber <= 0
 
 
     lines = @_sourceCode.split '\n'
-    throw new Error 'Line number is out of range' if lineNumber > lines.length
+    throw new RangeError 'Line number is out of range' if lineNumber > lines.length
 
     currentLine = lines[lineNumber - 1]
 
     if columnNumber > currentLine.length
-      throw new Error 'Column number is out of range'
+      throw new RangeError 'Column number is out of range'
 
 
     error = []

@@ -20,7 +20,7 @@ describe 'Error reporter', ->
     context 'with source code that is not a string', ->
       it 'should throw an error', ->
         exercise = -> new ErrorReporter({})
-        expect(exercise).to.throw Error, 'Source code must be a string'
+        expect(exercise).to.throw TypeError, 'Source code must be a string'
 
     context 'with source code that is a string', ->
       it 'should create an instance', ->
@@ -41,7 +41,7 @@ describe 'Error reporter', ->
         it 'should throw an error', ->
           errorReporter = new ErrorReporter 'a'
           exercise = -> errorReporter.reportError {}, 1, 1
-          expect(exercise).to.throw Error, 'Message must be a string'
+          expect(exercise).to.throw TypeError, 'Message must be a string'
 
       context 'that is empty', ->
         it 'should throw an error', ->
@@ -62,19 +62,19 @@ describe 'Error reporter', ->
         it 'should throw an error', ->
           errorReporter = new ErrorReporter 'a'
           exercise = -> errorReporter.reportError 'Test message', {}, 1
-          expect(exercise).to.throw Error, 'Line number must be a number'
+          expect(exercise).to.throw TypeError, 'Line number must be a number'
 
       context 'that is invalid', ->
         it 'should throw an error', ->
           errorReporter = new ErrorReporter 'a'
           exercise = -> errorReporter.reportError 'Test message', 0, 1
-          expect(exercise).to.throw Error, 'Line number is invalid'
+          expect(exercise).to.throw RangeError, 'Line number is invalid'
 
       context 'that is out of range', ->
         it 'should throw an error', ->
           errorReporter = new ErrorReporter 'a'
           exercise = -> errorReporter.reportError 'Test message', 2, 1
-          expect(exercise).to.throw Error, 'Line number is out of range'
+          expect(exercise).to.throw RangeError, 'Line number is out of range'
 
 
     describe 'with a column number', ->
@@ -89,19 +89,19 @@ describe 'Error reporter', ->
         it 'should throw an error', ->
           errorReporter = new ErrorReporter 'a'
           exercise = -> errorReporter.reportError 'Test message', 1, {}
-          expect(exercise).to.throw Error, 'Column number must be a number'
+          expect(exercise).to.throw TypeError, 'Column number must be a number'
 
       context 'that is invalid', ->
         it 'should throw an error', ->
           errorReporter = new ErrorReporter 'a'
           exercise = -> errorReporter.reportError 'Test message', 1, 0
-          expect(exercise).to.throw Error, 'Column number is invalid'
+          expect(exercise).to.throw RangeError, 'Column number is invalid'
 
       context 'that is out of range', ->
         it 'should throw an error', ->
           errorReporter = new ErrorReporter 'a'
           exercise = -> errorReporter.reportError 'Test message', 1, 2
-          expect(exercise).to.throw Error, 'Column number is out of range'
+          expect(exercise).to.throw RangeError, 'Column number is out of range'
 
 
     context 'with valid parameters', ->
