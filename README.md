@@ -1,4 +1,4 @@
-# Error Reporter [![Build Status](https://travis-ci.org/the-gss/error-reporter.png?branch=master)](https://travis-ci.org/the-gss/error-reporter)
+# Error Reporter [![Build Status](https://travis-ci.org/gss/error-reporter.png?branch=master)](https://travis-ci.org/gss/error-reporter)
 Provide source code context when reporting errors.
 
 ```
