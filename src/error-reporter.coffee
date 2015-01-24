@@ -16,9 +16,6 @@
 #
 class ErrorReporter
 
-  _toString: Object.prototype.toString
-
-
   # @property [String] The source code to report errors on.
   # @private
   #
@@ -32,7 +29,7 @@ class ErrorReporter
   constructor: (sourceCode) ->
     throw new Error 'Source code not provided' unless sourceCode?
 
-    unless @_toString.call(sourceCode) is '[object String]'
+    unless Object.prototype.toString.call(sourceCode) is '[object String]'
       throw new TypeError 'Source code must be a string'
 
     @_sourceCode = sourceCode
@@ -49,7 +46,7 @@ class ErrorReporter
   reportError: (message, lineNumber, columnNumber) =>
     throw new Error 'Message not provided' unless message?
 
-    unless @_toString.call(message) is '[object String]'
+    unless Object.prototype.toString.call(message) is '[object String]'
       throw new TypeError 'Message must be a string'
 
     throw new Error 'Message must not be empty' if message.length is 0
@@ -57,7 +54,7 @@ class ErrorReporter
 
     throw new Error 'Line number not provided' unless lineNumber?
 
-    unless @_toString.call(lineNumber) is '[object Number]'
+    unless Object.prototype.toString.call(lineNumber) is '[object Number]'
       throw new TypeError 'Line number must be a number'
 
     throw new RangeError 'Line number is invalid' if lineNumber <= 0
@@ -65,7 +62,7 @@ class ErrorReporter
 
     throw new Error 'Column number not provided' unless columnNumber?
 
-    unless @_toString.call(columnNumber) is '[object Number]'
+    unless Object.prototype.toString.call(columnNumber) is '[object Number]'
       throw new TypeError 'Column number must be a number'
 
     throw new RangeError 'Column number is invalid' if columnNumber <= 0
