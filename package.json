@@ -1,7 +1,7 @@
 {
   "name": "error-reporter",
   "description": "Provide source code context when reporting errors.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "repository": {
     "type": "git",
     "url": "git://github.com/gss/error-reporter.git"
